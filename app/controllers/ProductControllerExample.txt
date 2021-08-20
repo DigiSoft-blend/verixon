@@ -1,0 +1,103 @@
+
+
+namespace App\controllers;
+
+use App\http\Request;
+use App\http\Response;
+use App\Model\Product as Pro;
+use App\Entities\Product as MyProduct;
+use App\redirect\Redirect;
+use App\container\ContainerResolver;
+
+
+class ProductDashboard extends Controller{
+
+
+  public function insertProduct(Request $request)
+  {
+    $productName = $request->getPost('name');
+    $productDescription = $request->getPost('description');
+    $productPrice = $request->getPost('price');
+    $productTotalPurchased = $request->getPost('total');
+
+
+    if($request->isSubmitted())
+    { 
+      $productTable = new Pro;
+      $product = $productTable->insert(MyProduct::class);
+      $product->setName($productName);
+      $product->setDescription($productDescription);
+      $product->setPrice($productPrice);
+      $product->setTotalPurchased($productTotalPurchased);
+      $productTable->save($product);
+    }
+
+    $this->render('login.html.twig');
+  }
+
+  
+
+    public function showAllProducts(Pro $productTable)//working
+    {
+     $products = $productTable->all(MyProduct::class);
+     $data = ['products' => $products];
+     $this->render('dashboard.html.twig', $data);
+    }
+
+
+
+    public function select(Model $productTable) // working
+    {
+      $product = $productTable->find(MyProduct::class, 1);
+      echo $product->getName();
+    }
+
+
+    public function updateProduct(Model $productTable)
+    {
+      $product = $productTable->update(MyProduct::class, 1);
+      $product->setName('IMax');
+      $product->setDescription('A very powerfull iMax');
+      $product->setPrice(20,000);
+      $product->setTotalPurchased(5);
+      $productTable->save($product);
+       echo "UPDATED";
+    }
+
+    /**
+    * Delete a Products
+    */
+
+    public function deleteProduct(Request $request) // working
+    {
+      $prodParams = $request->getUrlParameters();
+      $id = $prodParams['id'];
+      $productTable = new Pro;
+      $product = $productTable->find(MyProduct::class, $id);
+      $productTable->delete($product);
+      Redirect::url('/dashboard');
+    }
+
+
+   /**
+    * Select a Products
+    */
+
+    public function selectProduct(Request  $request){
+      
+      $productTable = ContainerResolver::get('Product','createProduct');
+      $prodParams = $request->getUrlParameters();
+      $id = $prodParams['id'];
+    
+      $product = $productTable->find(MyProduct::class, $id);
+      echo $product->getName()."<br>";
+      echo $product->getDescription()."<br>";
+      echo $product->getPrice()."<br>";
+    }
+
+    public function createProduct(Pro $product){
+      return $product;
+    }
+
+
+}

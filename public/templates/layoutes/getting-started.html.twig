@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!--
+    /   Multipurpose: Free Template by FreeHTML5.co
+    /   Author: https://freehtml5.co
+    /   Facebook: https://facebook.com/fh5co
+    /   Twitter: https://twitter.com/fh5co
+    -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- Document title -->
+    <title>Verixon</title>
+    <!-- Stylesheets & Fonts -->
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700,700i%7CRajdhani:400,600,700"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>    
+    
+    <!-- stylesheet included here -->
+   <style>
+     {{ source('bootstrapCss/bootstrap.min.css') }} 
+     {{ source('bootstrapCss/font-awesome.css') }}
+     {{ source('bootstrapCss/blog.css') }}
+     {{ source('VerixonCss/verixon.css') }}
+   </style>
+
+</head>
+
+<body>
+
+    {% block content %}
+    {% endblock %}
+
+     <script>
+      {{ source('bootstrapJs/bootstrap.bundle.min.js') }}
+    </script>
+</body>
+</html>

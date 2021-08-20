@@ -1,0 +1,77 @@
+<?php
+
+namespace App\controllers;
+
+use App\http\Request;
+use App\http\Response;
+use App\Model\UserTable;
+use App\Entities\User;
+
+class Ref extends Controller{
+
+
+    public function index(Request $request)
+    {
+      $name = $request->getPost('name');
+
+      if($request->isSubmitted())
+      {
+        $data = ['name' =>  $name ];
+      }
+
+      $this->render('form-test.html.twig',  $data);
+    }
+    
+   
+
+    public function showAllUser(UserTable $userTable)//working
+    {
+     $users = $userTable->all(User::class);
+     $data = ['users' => $users];
+     $this->render('helloworld.html.twig', $data);
+    }
+
+
+
+
+    public function insertUser(UserTable $userTable)//working
+    { 
+      $user = $userTable->insert(User::class);
+      $user->setName('Mark Tom');
+      $user->setEmail('www.mark@gmail.com');
+      $userTable->save($user);
+      echo "created";
+    }
+
+
+
+    public function select(UserTable $userTable) // working
+    {
+      $user = $userTable->find(User::class, 1);
+      echo $user->getName();
+    }
+
+
+    public function updateUser(UserTable $userTable){
+    
+      $user = $userTable->update(User::class, 1);
+      $user->setName('Mark TomAAAbbb');
+      $user->setEmail('www.mark@gmail.com');
+      $userTable->save($user);
+       echo "UPDATED";
+    }
+
+    public function deleteUser(UserTable $userTable) // working
+    {
+      $user = $userTable->find(User::class, 2);
+      $userTable->delete($user);
+      echo "DELETED";
+    }
+
+    public function stringExplode(Request  $request){
+      
+     echo 'ok';
+     
+    }
+
+}

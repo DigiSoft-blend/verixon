@@ -1,0 +1,22 @@
+{
+    "name": "agv/phptutorial",
+    "authors": [
+        {
+            "name": "DigiSoft-blend",
+            "email": "u.silas@yahoo.com"
+        }
+    ],
+    "require": {
+       "doctrine/orm": "*",
+        "symfony/http-foundation": "^5.3",
+        "twig/twig": "^2.0",
+        "symfony/cache": "^5.3",
+        "swiftmailer/swiftmailer": "^6.0",
+        "cloudinary/cloudinary_php": "^2"
+    },
+    "autoload": {
+        "psr-4":{
+            "App\\": "app/"
+        }
+    }
+}

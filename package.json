@@ -1,0 +1,26 @@
+{
+  "name": "verixon",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "autoprefixer": "^10.2.6",
+    "postcss": "^8.3.5",
+    "tailwindcss": "^2.2.2"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "build:css": "tailwind build src/style.css -o ./public/templates/TailCss/style.css"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DigiSoft-blend/verixon.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/DigiSoft-blend/verixon/issues"
+  },
+  "homepage": "https://github.com/DigiSoft-blend/verixon#readme"
+}
