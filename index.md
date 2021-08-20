@@ -1,4 +1,19 @@
-## Getting started with Verixon 
+### Getting started with Verixon 💎
+
+Verixon is an open source PHP project intended to get you equipped with OOP in PHP. feel free to build interesting web applications with Verixon.
+
+## Requirements
+
+1.  PHP 7 or higher
+2.  Server installed
+3.  DataBase installed
+4.  Composer installed
+
+## Getting everything ready
+
+1. Install Xampp on your PC: xampp comes with PHP 7 or higher + Apache server + MySQL db.
+Download Xampp and run the installation manager on your PC.
+2. Download Composer for php: Composer is a package manager Which saves you the stress in manually installing dependencies or libraries needed to run your PHP code, hence Composer will do all the hard work for you, make sure to install composer before running Verixon.
 
 You can use the [editor on GitHub](https://github.com/DigiSoft-blend/verixon/edit/gh-pages/index.md) to maintain and preview the content for your website in Markdown files.
 
