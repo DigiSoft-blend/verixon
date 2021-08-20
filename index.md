@@ -1,4 +1,4 @@
-## Welcome to GitHub Pages
+## Getting started with Verixon 
 
 You can use the [editor on GitHub](https://github.com/DigiSoft-blend/verixon/edit/gh-pages/index.md) to maintain and preview the content for your website in Markdown files.
 
