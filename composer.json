@@ -15,7 +15,7 @@
             "role": "Developer"
         }
     ],
-    "minimum-stability": "stable",
+   
     "repositories": [
     {
         "type": "vcs",
