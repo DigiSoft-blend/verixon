@@ -1,5 +1,5 @@
 {
-    "name": "agv/phptutorial",
+    "name": "verixon",
     "authors": [
         {
             "name": "DigiSoft-blend",
@@ -7,7 +7,7 @@
         }
     ],
     "require": {
-       "doctrine/orm": "*",
+        "doctrine/orm": "*",
         "symfony/http-foundation": "^5.3",
         "twig/twig": "^2.0",
         "symfony/cache": "^5.3",
