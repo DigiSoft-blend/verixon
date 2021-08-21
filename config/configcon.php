@@ -55,5 +55,5 @@
     define('UPLOAD_PATH', PUBLIC_PATH . 'uploads' . DS);
     define('MIGRATIONS_PATH', APP_PATH . 'migrations' . DS);
     define('FILE_PATH', PUBLIC_PATH . 'uploadedFiles' . DS);
-
+    define('TEMPLATE_PATH', PUBLIC_PATH . 'templates' . DS );
 
