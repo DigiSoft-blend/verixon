@@ -20,7 +20,8 @@
     {
         "type": "vcs",
         "url": "https://github.com/DigiSoft-blend/verixon"
-    },
+    }
+    ],
     "require": {
         "doctrine/orm": "*",
         "symfony/http-foundation": "^5.3",
