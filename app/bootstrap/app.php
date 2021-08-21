@@ -14,7 +14,7 @@ use App\bootstrap\kernel;
 class app{
 
   public function __construct(){
-     kernel::StartVerixon(_UNIQUE_ID, _APP_KEY);
+     kernel::StartVerixon();
   }
   
 }

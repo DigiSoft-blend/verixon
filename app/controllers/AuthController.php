@@ -23,72 +23,66 @@ class AuthController extends Controller
   
   public function registerUser(Request $request)
   {
-    
+
     $file_extension = [
       'png',
       'jpg',
       'jpeg'
-     ];
+    ];
     
     $email = $request->getPost('email');
     $password = $request->getPost('password');
     $file = $request->getFile('profileImage');
 
     
-     $UserTable = new UserTable;
-     $uniqueUser = $UserTable->findOneBy(User::class, ['email'=> $email]);
-
-    /** Test for unique user in database */ 
-    if(empty($uniqueUser))
-    {
+    if($request->isSubmitted())
+    {  
       /** Test if form is submitted */
-      if($request->isSubmitted())
-      { 
+      $UserTable = new UserTable;
+      $uniqueUser = $UserTable->findOneBy(User::class, ['email'=> $email]);
+      
+      /** Test for unique user in database */ 
+      if(empty($uniqueUser))
+      {
         $request->startSession(); 
         $validation = new ImageValidation(); 
         $validated = $validation->validate($file_extension, '4m', 'profileImage');
-         /** Test if image is valid file type */
+        /** Test if image is valid file type */
         if($validated === 'File_Exist' || $validated === 'Invalid_File' || $validated === 'Max_Size_Exceeded'){
-          $request->sessionSaveThis('error', $validated);
+          $data = ['error' => $validated ];
+          $this->render('register.html.twig', $data);
         }
         else{ 
           /** Upload image to cloudinary and saves user credentials in database */
-           $cloudService = new Cloudinary();
-           $cloudService->prepare();  
-           $connection = $cloudService->send('profileImage', $file);
+          $cloudService = new Cloudinary();
+          $cloudService->prepare();  
+          $connection = $cloudService->send('profileImage', $file);
 
           if($connection === 'connection_error'){
-            $request->sessionSaveThis('connectionError', 'Faild to connect to the internet: check your network connection !'); 
             $request->unlinkFile($file);
+            $data = ['connectionError' => 'Connection error. Check your network settings !' ];
+            $this->render('no-network.html.twig', $data);
           }else{
             $user = $UserTable->insert(User::class); //user table insert using User::class entity
             $user->setEmail($email);
             $user->setPassword($password);
             $user->setImgSecureUrl($cloudService->getSecureUrl());
             $user->setImgPublicID($cloudService->getPublicID());
-            $UserTable->save($user);  
-            $request->sessionSaveThis('alert0', 'Registration Successful !'); 
+            $UserTable->save($user);   
+            $data = ['alert0' => 'Registration Successful !'];
+            $this->render('register.html.twig', $data);
           }
         }
-
-      }
+      }else{  
+        $data = ['alert1' => 'The email you tried registring with already exist'];
+        $this->render('register.html.twig', $data);
+      } 
     }else{
-      $request->sessionSaveThis('alert1', 'The email you tried registring with already exist');
-    } 
+      $this->render('register.html.twig');
+      $request->sessionReset();
+    }  
     
-    $data = [
-      'alert0' => $request->sessionGet('alert0'),
-      'alert1' => $request->sessionGet('alert1'),
-      'error'  => $request->sessionGet('error'),
-      'connectionError'  => $request->sessionGet('connectionError'),
-    ];
-
-    $request->sessionReset();
-   
-    $this->render('register.html.twig', $data);
   }
-
-
 
 
 
@@ -97,62 +91,51 @@ class AuthController extends Controller
     $email = $request->getPost('email');
     $password = $request->getPost('password');
 
+    $request->startSession();
+
     if($request->isSubmitted())
     { 
-      $request->startSession();
-      
       $UserTable = new UserTable;
       $user = $UserTable->findOneBy(User::class, ['email'=> $email]);
+
+
+          $request->sessionSaveThis('password', $password);
+          $request->sessionSaveThis('email', $email );
 
      if(!empty($user))
      {
         $originalPassword = '$2y$09$'. $user->getPassword();
         $email = $user->getEmail();
 
-       if(hash::verifyThis($password, $originalPassword))
-       {
-         $request->sessionSaveThis('password', $password);
          $request->sessionSaveThis('originalPassword', $originalPassword);
-         $request->sessionSaveThis('email',  $user->getEmail());
 
-         $this->render('logged-in.html.twig', ['email' => $user->getEmail()] );
-
+        if($request->authenticated($password, $originalPassword))
+        {
+          $this->render('logged-in.html.twig', ['email' => $user->getEmail()] );
         }else{
-         
-         $request->sessionSaveThis('alert3', 'Invalid password');
-
-         $notification = [
-           'alert3' => $request->sessionGet('alert3')
-         ];
-
-         $this->render('login.html.twig', $notification );
+          $notification = ['alert3' => 'Invalid password'];
+          $this->render('login.html.twig', $notification );
         }
 
       }else{
-        $request->sessionSaveThis('alert2', 'Invalid user, please kindly regiser to create your verixon account');
-        
-        $notification = [
-          'alert2' => $request->sessionGet('alert2')
-        ];
-        
+        $notification = [ 'alert2' => 'Invalid user, please kindly regiser to create your verixon account' ];
         $this->render('login.html.twig', $notification);
       }
-
-    }else if($request->authCredentialsIsset())
+    
+    }elseif($request->authActive('password','originalPassword')) //requires session keys for password and hash
     {   
-      if($request->isAuthenticated()){
         $this->render('logged-in.html.twig', ['email' => $request->sessionGet('email')] );
-      } 
     }
-    else{
-      redirect::url('/login');
-    }  
+     else{
+      $this->render('login.html.twig');
+     }  
+
   }
 
   
   public function logout(Request $request){
      $request->endSession();
-     redirect::url('/');
+     Redirect::url('/');
   }
 
 

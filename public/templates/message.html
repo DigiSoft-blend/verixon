@@ -1,0 +1,112 @@
+{% extends "layoutes/login.html.twig" %}
+
+{% block content %}
+
+<div class="container">
+  <header class="header clearfix mt-4">
+     <nav class="navbar navbar-expand-lg navbar-light" style="color:ghostwhite;">
+       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample10" aria-controls="navbarsExample10" aria-expanded="false" aria-label="Toggle navigation">
+         <span class="navbar-toggler-icon"></span>
+       </button>
+ 
+       <div class="collapse navbar-collapse justify-content-md-center" id="navbarsExample10">
+       <ul class="navbar-nav float-right">
+          <h3 class="text-muted pr-4">PHP GURU</h3>
+         <li class="nav-item">
+           <a style="color:rgba(203, 233, 300, 1)" class="nav-link" href="/">Home</a>
+         </li>
+         <li class="nav-item dropdown">
+           <a style="color:rgba(203, 233, 300, 1)" class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">VerixonForms</a>
+           <div class="dropdown-menu">
+             <a class="dropdown-item" href="/registerUser">Sign Up</a>
+             <a class="dropdown-item" href="/loginUser">Sign In</a>
+             <a class="dropdown-item" href="/sendEmail">Send Email</a>
+           </div>
+         </li>
+       </ul>
+     </div>
+     </nav>
+   </header>
+   <hr style="background-color: gray;">
+  </div>
+  
+<br>
+<div class="container">
+<div class="row">
+<div class="col-md-4 mb-4">
+  <form style="background-color:inherit; color: rgb(179, 179, 185); border:solid 1px gray" class="form-control pb-4" method="POST" action="/encrypt">
+    <h4 style="text-align:center" class="mt-4">Encrypt a message</h4> 
+    <hr style="background-color: gray;">
+   <div class="form-group">
+     <label for="text">Message:</label>
+     <textarea class="form-control" rows="2" id="message" name="message" style="color:black"></textarea>
+   </div>
+ 
+   <!-- <div class="form-group">
+     <label for="pwd">Public key:</label>
+     <input type="text" class="form-control" name="keyA" required  style="color:black">
+   </div> -->
+   <div class="form-check">
+     <label class="form-check-label">
+       <input class="form-check-input" type="checkbox"> Remember me
+     </label>
+   </div>
+   <button type="submit" class="btn btn-block btn-danger" name="submit">Encrypt</button>  
+  </form>
+</div>
+
+<div class="col-md-4 mb-4">
+  <form style="background-color:inherit; color: rgb(179, 179, 185); border:solid 1px gray" class="form-control pb-4" method="POST" action="/decrypt">
+    <h4 style="text-align:center" class="mt-4">Decrypt a message</h4> 
+    <hr style="background-color: gray;">
+   <div class="form-group">
+     <label for="text">Plaintext:</label>
+     <div style="padding: 20px; background-color: rgb(17, 20, 20); color: crimson; border:solid 1px gray">
+       {{ plaintext }}
+     </div>
+   </div>
+   <div class="form-group">
+    <label for="text">Encrypted message:</label>
+    <textarea class="form-control" rows="2" id="encryptedmessage" name="encryptedmessage" style="color:black"></textarea>
+  </div>
+  <div class="form-group">
+    <label for="text">Envelop:</label>
+    <input type="text" class="form-control" name="envelop" required style="color:black">
+  </div>
+   <!-- <div class="form-group">
+     <label for="pwd">Private key:</label>
+     <input type="text" class="form-control" name="keyB" required  style="color:black">
+   </div> -->
+   <div class="form-check">
+     <label class="form-check-label">
+       <input class="form-check-input" type="checkbox"> Remember me
+     </label>
+   </div>
+   <button type="submit" class="btn btn-block btn-danger" name="submit">Dencrypt</button>
+ </form>
+</div>
+
+
+<div class="col-md-4"> 
+    <div class="table-responsive">         
+    <table class="table table-dark table-striped">
+      <thead>
+        <tr>
+          <th>Encrypted messages</th>
+          <th>Envelop</th>
+        </tr>
+      </thead>
+      <tbody>
+         {% for message in encryptedMessage  %}
+          <tr>
+            <td>{{ message.getEncryptedMessage }}</td>
+            <td>{{ message.getEnvelop }}</td>
+          </tr>
+         {% endfor %}
+      </tbody>
+    </table>
+    </div>  
+</div>
+</div>
+
+ {% endblock %}  

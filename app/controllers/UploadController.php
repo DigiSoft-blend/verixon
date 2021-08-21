@@ -8,6 +8,7 @@ namespace App\controllers;
   use Cloudinary\Transformation\Resize;
   use Cloudinary\Transformation\Effect;
   use App\Validate\ImageValidation;
+  use App\hashing\Hash;
  
 class UploadController extends Controller{
 
@@ -18,12 +19,17 @@ class UploadController extends Controller{
          'jpg',
          'jpeg'
         ];
-
+     
+     $token = $request->getPost('token');   
      $file = $request->getFile('file');
      
-     if($request->isSubmitted())
+     $request->startSession();
+
+     $request->sessionSaveThis('token',  $token );
+     var_dump($request->sessionGet('token'));
+
+     if($request->isSubmitted())// && hash::verifyThis('/file', $token))
      {  
-        $request->startSession(); 
         $validation = new ImageValidation(); 
         $validated = $validation->validate($file_extension, '4m', 'file');
         
@@ -47,7 +53,7 @@ class UploadController extends Controller{
                //do database stoff in here
             }
           }
-        }   
+          
 
      $data = [
       'secure_url' => $request->sessionGet('secure_url'),
@@ -56,8 +62,11 @@ class UploadController extends Controller{
       'error' => $request->sessionGet('error')
      ];
 
-    $request->sessionReset();
-    $this->render('fileUpload.html.twig', $data);
+
+     $this->render('fileUpload.html.twig', $data);
+    }else{
+      echo 'session expired';
+    }
  }
 
 

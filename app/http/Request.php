@@ -47,8 +47,8 @@ class Request{
           echo 'file not set';
           $this->submited = false;
         }
-     }exit; 
-   }exit;
+     } 
+   }
  }
 
   public function getTargetFile(){
@@ -124,21 +124,32 @@ class Request{
     }
   }
 
-  public function authCredentialsIsset(){
-    if(isset($_SESSION['password']) && isset($_SESSION['originalPassword'])){
+  public function authenticated($password, $originalPassword){
+    if(hash::verifyThis($password, $originalPassword)){
       return true;
     }else{
       return false;
     }
   }
 
+ 
 
-  public function isAuthenticated(){
-    if(hash::verifyThis($_SESSION['password'], $_SESSION['originalPassword'])){
-      return true;
+  public function authActive($password, $originalPassword ){
+    if(isset($password) && isset($originalPassword)){
+      if(array_key_exists($password, $_SESSION) &&  array_key_exists($originalPassword , $_SESSION)){
+        $pass = $_SESSION[$password];
+        $originalPass = $_SESSION[$originalPassword];
+        if(hash::verifyThis($pass, $originalPass)){
+          return true;
+        }else{
+          return false;
+        } 
+      }else{
+        return false;
+      }
     }else{
       return false;
-    } 
+    }  
   }
 
 

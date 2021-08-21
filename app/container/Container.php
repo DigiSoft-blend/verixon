@@ -105,9 +105,12 @@ class Container implements ContainerInterface
            if(empty($parameters)){  
                return $method->invoke(new $class, $id = []);
            }else{
-            foreach($parameters as $parameter){ 
+            foreach($parameters as $parameter)
+            { 
               $reflectionClass = $parameter->getClass();
-              if(isset($reflectionClass)){
+
+              if(isset($reflectionClass))
+              {
                 $dependency = $parameter->getClass()->getName();
                 return $method->invoke(new $class, new $dependency, $d = [] );
               }else{

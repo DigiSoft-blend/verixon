@@ -4,7 +4,7 @@ use App\EnvLoader\Env;
 
 (new Env('.env'));
 
-return (object) [
+return [
 
     /*
     |--------------------------------------------------------------------------
@@ -35,14 +35,17 @@ return (object) [
     |
     */
     
-        'configurations' => [
+       
+         'sqlit' => [
             //sqlite
             'sqlite_driver' => 'sqlite',
             'sqlite_url' => getenv('DATABASE_URL'),
             'sqlite_database' => getenv('DB_DATABASE'),
             'sqlite_prefix' => '',
             'sqlite_foreign_key_constraints' => getenv('DB_FOREIGN_KEYS'),
-
+           ], 
+            
+         'mysql' => [
             //mysql
             'mysql_driver' => 'mysql',
             'mysql_url' => getenv('DATABASE_URL'),
@@ -61,8 +64,9 @@ return (object) [
             'mysql_options' => extension_loaded('pdo_mysql') ? array_filter([
                 PDO::MYSQL_ATTR_SSL_CA => getenv('MYSQL_ATTR_SSL_CA'),
             ]) : [],
-
-            //pdo_ mysql
+          ], 
+           
+         'pdo_mysql'=>[
             'pdo_mysql_driver' => 'pdo_mysql',
             'pdo_mysql_url' => getenv('DATABASE_URL'),
             'pdo_mysql_host' => getenv('DB_HOST'),
@@ -77,8 +81,11 @@ return (object) [
             'pdo_mysql_prefix_indexes' => true,
             'pdo_mysql_strict' => true,
             'pdo_mysql_engine' => null,
-
-           //pgsql 
+          ],
+            //pdo_ mysql
+            
+          'pgsql' => [
+            //pgsql 
             'pgsql_driver' => 'pgsql',
             'pgsql_url' => getenv('DATABASE_URL'),
             'pgsql_host' => getenv('DB_HOST'),
@@ -91,8 +98,10 @@ return (object) [
             'pgsql_prefix_indexes' => true,
             'pgsql_schema' => 'public',
             'pgsql_sslmode' => 'prefer',
+          ],
+           
 
-
+           'sqlsrv'=>[
             //sqlsrv
             'sqlsrv_driver' => 'sqlsrv',
             'sqlsrv_url' => getenv('DATABASE_URL'),
@@ -104,9 +113,9 @@ return (object) [
             'sqlsrv_charset' => 'utf8',
             'sqlsrv_prefix' => '',
             'sqlsrv_prefix_indexes' => true,
-
+           ],
             
-        ],
+        
 
        
 

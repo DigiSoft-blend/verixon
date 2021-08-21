@@ -7,11 +7,13 @@ body {
 }
 
 
+
 .jumbotron {
   padding-top: 6rem;
   padding-bottom: 6rem;
   margin-bottom: 0;
   background-color: #fff;
+  color: rgba(203, 233, 247, 0.705);
 }
 
 .jumbotron p:last-child {

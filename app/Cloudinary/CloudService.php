@@ -2,6 +2,13 @@
 
 namespace App\Cloudinary;
 
+/**
+ * Verixon - A PHP Framework For Web Devs
+ *
+ * @package  Verixon
+ * @author   Silas Udofia <Silas@Verixon.com>
+ */
+
 use Cloudinary\Cloudinary;
 use Cloudinary\Uploader;
 use Cloudinary\Transformation\Resize;

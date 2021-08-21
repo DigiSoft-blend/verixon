@@ -44,47 +44,55 @@ class EmailController extends Controller
     $body = $request->getPost('body');
     $attachment = $request->getFile('attachment');
 
-    
+    $request->startSession();
+
    if($request->isSubmitted())
    {
       $validation = new ImageValidation(); 
       $validated = $validation->validate($file_extension, '4m', 'attachment');
       /** Test if image is valid file type */
       if($validated === 'File_Exist' || $validated === 'Invalid_File' || $validated === 'Max_Size_Exceeded'){
-        $request->sessionSaveThis('error', $validated);
+        //$request->sessionSaveThis('error', $validated);
+        $data = [ 'error' => $validated ];
+        $this->render('mail.html.twig', $data);
       }
-      else{ 
-        $request->startSession(); 
+      else{  
         $gmail->prepare();
         $gmail->from_Verixon();//from address @ .env 
         $gmail->to($recipient, $name);
         $gmail->body($body);
-        //$gmail->attachFile('sample.jpg');
+        $gmail->attachFile($attachment);
         $gmail->contentType('text/html');
         $gmail->send();
 
-        $status = $gmail->getStatus();
+        $connection = $gmail->getStatus();
 
-        $request->sessionSaveThis('messageSentAlert', 'Mail has been sent to '. $recipient);
-        $request->sessionSaveThis('connectionErrorMessage', $status['message']);
-        $request->sessionSaveThis('success', $status['transport_success']);
-        $request->sessionSaveThis('failure', $status['transport_failure']);
+        if($connection['transport_failure'] === true){
+          
+           $request->sessionSaveThis('connectionError', 'Connection error. Check your network connection !');
+
+          $data = [
+            'connectionErrorMessage' => $connection['message']
+          ];
+         
+          $this->render('no-network.html.twig', $data);
+          exit;
+
+        }else{
+          $request->sessionSaveThis('messageSentAlert', 'Mail has been sent to '. $recipient);
+          echo 'ok';
+        }
      }
-    
+
+   }else{   
     $notification = [
       'messageSentAlert' => $request->sessionGet('messageSentAlert'),
-      'connectionErrorMessage' => $request->sessionGet('connectionErrorMessage'),
-      'success' => $request->sessionGet('success'),
-      'failure' => $request->sessionGet('failure'),
-      'invalid_file' => $request->sessionGet('error')
     ];
-  
 
     $this->render('mail.html.twig', $notification);
-
     $request->sessionReset();
-
    }
+
   }
 
   

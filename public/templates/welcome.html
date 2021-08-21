@@ -1,0 +1,42 @@
+{% extends "layoutes/welcome.html.twig" %}
+
+{% block content %}
+
+<div class="container">
+  <header class="header clearfix">
+    <nav class="navbar navbar-expand-lg navbar-light" style="color:ghostwhite;">
+
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample10" aria-controls="navbarsExample10" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse justify-content-md-center" id="navbarsExample10">
+      <ul class="navbar-nav float-right">
+         <h3 class="text-muted pr-4">PHP GURU</h3>
+        <li class="nav-item dropdown">
+          <a style="color:rgba(203, 233, 300, 1)" class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">VerixonForms</a>
+          <div class="dropdown-menu" style="background-color: rgb(191, 190, 199);">
+            <a class="dropdown-item" href="/registerUser">Sign Up</a>
+            <a class="dropdown-item" href="/loginUser">Sign In</a>
+            <a class="dropdown-item" href="/sendEmail">Send Email</a>
+          </div>
+        </li>
+        <li class="nav-item">
+          <a style="color:rgba(203, 233, 300, 1)" class="nav-link" href="/encrypt">Encryption</a>
+        </li>
+      </ul>
+    </div>
+    </nav>
+  </header>
+  <!-- background-color:rgba(18, 10, 39, 0.356) -->
+    <div class="jumbotron" style="background-color:inherit; color: ghostwhite; border:solid 1px gray">
+      <h1 class="display-3 verixon-gradent-text" style="font-family: fantasy;">VERIXON</h1>
+      <h6 class="lead" style="color: rgb(192, 176, 250);">Verixon is an open source php framework for developers: written and managed by digisoft.
+      <br><hr style="background-color: darkslateblue;"><span style="color: rgb(105, 99, 146);">For creating fresh entity entries in database run the bellow code</span></h6>
+      <code style="background-color:rgb(34, 33, 33); color: darkgrey;">vendor/bin/doctrine orm:schema-tool:create</code>
+      <p  class="lead mt-4"><a class="btn btn-outline-primary" href="https://digisoft-blend.github.io/verixon/" role="button" style="border-radius:30px;">Getting started</a></p>
+    </div>
+
+</div>   
+    
+{% endblock %}   

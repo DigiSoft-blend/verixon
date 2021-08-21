@@ -4,13 +4,15 @@ namespace App\controllers;
 
   use App\request\Request;
   use App\http\Response;
- 
+  use App\hashing\Hash;
+  use App\Encryption\Crypto;
+
 class Verixon extends Controller{
 
    
     public function index()
     {
-      $this->render('welcome.html.twig');
+      $this->render('welcome.html');
     }
 
     public function dashboard()
@@ -35,9 +37,15 @@ class Verixon extends Controller{
     public function sendMail(){
       $this->render('mail.html.twig');
     }
+    
 
-    public function fileUpload(){
+    public function fileUpload()
+    {
       $this->render('fileUpload.html.twig');
+    }
+
+    public function noNetworkConnection(){
+      $this->render('no-network.html.twig');
     }
 
 }

@@ -13,12 +13,14 @@ use Symfony\Component\HttpFoundation\RedirectResponse;
 
 class Redirect{
 
-    public function url($url){
-          header('Location:'. $url , http_response_code(404));
-          exit();
+    public function url($url)
+    {
+      header('Location:'. $url , http_response_code(404));
+      exit();
     }
 
-    public function redirect($location){
+    public function redirect($location)
+    {
       return  $response = new RedirectResponse($location);
     }
 
