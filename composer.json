@@ -13,8 +13,7 @@
             "email": "silasudofia469@gmail.com"
         }
     ],
-    "minimum-stability": "dev",
-    "prefer-stable": true,
+    "minimum-stability": "stable",
     "require": {
         "doctrine/orm": "*",
         "symfony/http-foundation": "^5.3",
