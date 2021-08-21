@@ -1,11 +1,20 @@
 {
-    "name": "verixon",
+    "name": "verixon/verixon",
+    "type": "project",
+    "description": "The verixon framework",
+    "keywords": [
+        "framework",
+        "verixon"
+    ],
+    "license": "MIT",
     "authors": [
         {
             "name": "DigiSoft-blend",
             "email": "silasudofia469@gmail.com"
         }
     ],
+    "minimum-stability": "dev",
+    "prefer-stable": true,
     "require": {
         "doctrine/orm": "*",
         "symfony/http-foundation": "^5.3",
