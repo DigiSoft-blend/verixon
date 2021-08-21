@@ -16,6 +16,7 @@
         }
     ],
     "minimum-stability": "stable",
+    "repositories": [
     {
         "type": "vcs",
         "url": "https://github.com/DigiSoft-blend/verixon"
