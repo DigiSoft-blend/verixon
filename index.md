@@ -1,6 +1,15 @@
 ### Getting started with Verixon 💎
 
 Verixon is an open source PHP project intended to get you equipped with OOP with PHP. feel free to build interesting web applications with Verixon.
+## Cool Features
+1. Doctrine ORM DBAL integration.
+2. Twig template engine integration.
+3. Swift Mailer: easy mailing system.$transport.
+4. Cloudinary Api integration: upload images/video/files + image transformations to cloudinary.
+5. User Authentication.
+6. Message Encryption. 
+7. Httpfoundation component.
+8. And lots more 😍
 
 ## Requirements
 
