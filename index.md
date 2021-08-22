@@ -23,13 +23,14 @@ Verixon is an open source PHP project intended to get you equipped with OOP with
 ## Getting everything ready
 
 1. Install Xampp on your PC: xampp comes with PHP 7 or higher + Apache server + MySQL db.
-Download Xampp and run the installation manager on your PC. here is the link for xamp installation: https://www.apachefriends.org
+Download Xampp and run the installation manager on your PC. here is the link for xamp installation: https://www.apachefriends.org .
 2. Download Composer for php: Composer is a package manager Which saves you the stress in manually installing dependencies or libraries needed to run your PHP code,
 you can install composer using the Windows Installer or via your terminal: here the composer installation link: https://getcomposer.org .
 The installer - which requires that you have PHP already installed - will download Composer for you and set up your PATH environment variable so you can simply call composer from any directory.
 Download and run Composer-Setup.exe - it will install the latest composer version whenever it is executed.
 hence Composer will do all the hard work for you, make sure to install composer before running Verixon.
-5. ## Create a verixon project via Composer
+
+3. ### Create a verixon project via Composer
 
  Run the following command in your terminal to create a new verixon project
  
