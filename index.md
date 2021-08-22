@@ -19,15 +19,39 @@ Verixon is an open source PHP project intended to get you equipped with OOP with
 4.  Composer installed
 5.  Text Editor
 
+
 ## Getting everything ready
 
 1. Install Xampp on your PC: xampp comes with PHP 7 or higher + Apache server + MySQL db.
-Download Xampp and run the installation manager on your PC.
+Download Xampp and run the installation manager on your PC. here is the link for xamp installation: https://www.apachefriends.org
 2. Download Composer for php: Composer is a package manager Which saves you the stress in manually installing dependencies or libraries needed to run your PHP code, hence Composer will do all the hard work for you, make sure to install composer before running Verixon.
-3. Download any text editor of your choice: for example Visual Studio Code would be a nice choice.
-4. Clone or download Verixon zip file.
-5. cd to Verixon root directory.
-6. Open new terminal in your text editor and start Verixon by running the code 
+3. ## Create a verixon project via Composer
+
+ Run the following command in your terminal to create a new verixon project
+ 
+ ```markdown
+ composer create-project verixon/verixon 
+ ```
+ or you can provide a new project directory via the command
+ 
+  ```markdown
+ composer create-project verixon/verixon directory_name
+ ```
+ 
+4. Create a .env file in root directory and copy the .env.example  to it.
+5. Create a database named verixon or your preffered db name but be sure to update in your .env file.
+
+for Example
+
+```markdown
+DB_CONNECTION=pdo_mysql
+DB_HOST=localhost
+DB_PORT=3306
+DB_DATABASE=verixon
+DB_USERNAME=root
+DB_PASSWORD=
+```
+6. Run the following command in your terminal 
 
    ```markdown
     $ php -S localhost:8000 serve.php
