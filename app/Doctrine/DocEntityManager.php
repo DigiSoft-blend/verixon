@@ -31,27 +31,22 @@ class DocEntityManager{
              /**
              * returns  doctrine pdo_sqlite db connection parameters defined in verixons .env
              * 
-             * @param $driver
-             * 
              * @return array :$connectionParams for pdo_sqlite
              *
              */
               return 
               $connectionParams = array(
                 'driver' => $driver = $db['default'],
-                'user' =>$db[$driver]['pdo_sqlite_user'],
-                'password' =>$db[$driver]['pdo_sqlite_password'],
-                'path' =>$db[$driver]['pdo_sqlite_path'],
-                'memory' =>$db[$driver]['pdo_sqlite_memory'],
+                'user' =>$db[$driver]['user'],
+                'password' =>$db[$driver]['password'],
+                'path' =>$db[$driver]['path'],
+                'memory' =>$db[$driver]['memory'],
                 );
                 break;
 
             case "mysqli":
-                
             /**
              * returns  doctrine mysqli db connection parameters defined in verixons .env
-             * 
-             * @param $driver
              * 
              * @return array :$connectionParams for mysqli
              *
@@ -59,25 +54,25 @@ class DocEntityManager{
                 return 
                 $connectionParams = array(
                     'driver' => $driver = $db['default'],
-                    'host' => $db[$driver]['mysqli_host'],
-                    'dbname' =>$db[$driver]['mysqli_database'],
-                    'user' =>$db[$driver]['mysqli_username'],
-                    'password' =>$db[$driver]['mysqli_password'],
-                    'unix_socket' =>$db[$driver]['mysqli_unix_socket'],
-                    'charset' =>$db[$driver]['mysqli_charset'],
-                    'ssl_key' =>$db[$driver]['mysqli_ssl_key'],
-                    'ssl_cert' =>$db[$driver]['mysqli_ssl_cert'],
-                    'ssl_ca' =>$db[$driver]['mysqli_ssl_ca'],
-                    'ssl_capath' =>$db[$driver]['mysqli_ssl_capath'],
-                    'ssl_cipher' =>$db[$driver]['mysqli_ssl_cipher'],
-                    'driverOptions' =>$db[$driver]['mysqli_driverOptions'],
+                    'host' => $db[$driver]['host'],
+                    'port' => $db[$driver]['port'],
+                    'dbname' =>$db[$driver]['dbname'],
+                    'user' =>$db[$driver]['user'],
+                    'password' =>$db[$driver]['password'],
+                    'unix_socket' =>$db[$driver]['unix_socket'],
+                    'charset' =>$db[$driver]['charset'],
+                    'ssl_key' =>$db[$driver]['ssl_key'],
+                    'ssl_cert' =>$db[$driver]['ssl_cert'],
+                    'ssl_ca' =>$db[$driver]['ssl_ca'],
+                    'ssl_capath' =>$db[$driver]['ssl_capath'],
+                    'ssl_cipher' =>$db[$driver]['ssl_cipher'],
+                    'driverOptions' =>$db[$driver]['driverOptions'],
                 );
                 break;
+
             case "pdo_oci":
              /**
              * returns  doctrine pdo_oci db connection parameters defined in verixons .env
-             * 
-             * @param $driver
              * 
              * @return array :$connectionParams for pdo_oci
              *
@@ -85,10 +80,18 @@ class DocEntityManager{
                 return 
                 $connectionParams = array(
                     'driver' => $driver = $db['default'],
-                    'host' => $db[$driver]['mysql_host'],
-                    'dbname' =>$db[$driver]['mysql_database'],
-                    'user' =>$db[$driver]['mysql_username'],
-                    'password' =>$db[$driver]['mysql_password'],
+                    'user' =>$db[$driver]['user'],
+                    'password' =>$db[$driver]['password'],
+                    'host' => $db[$driver]['host'],
+                    'port' => $db[$driver]['port'],
+                    'dbname' =>$db[$driver]['dbname'],
+                    'servicename' => $db[$driver]['servicename'],
+                    'service' => $db[$driver]['service'],
+                    'pooled' => $db[$driver]['pooled'],
+                    'charset' => $db[$driver]['charset'],
+                    'instancename' => $db[$driver]['instancename'],
+                    'connectstring' => $db[$driver]['connectstring'],
+                    'persistent' => $db[$driver]['persistent'],
                 );
                 break;
 
@@ -104,30 +107,13 @@ class DocEntityManager{
                 return 
                 $connectionParams = array(
                     'driver' => $driver = $db['default'],
-                    'host' => $db[$driver]['mysql_host'],
-                    'dbname' =>$db[$driver]['mysql_database'],
-                    'user' =>$db[$driver]['mysql_username'],
-                    'password' =>$db[$driver]['mysql_password'],
+                    'host' => $db[$driver]['host'],
+                    'port' => $db[$driver]['port'],
+                    'dbname' =>$db[$driver]['dbname'],
+                    'user' =>$db[$driver]['user'],
+                    'password' =>$db[$driver]['password'],
                 );
                 break;
-            case "oci8":
-             /**
-             * returns  doctrine oci8 db connection parameters defined in verixons .env
-             * 
-             * @param $driver
-             * 
-             * @return array :$connectionParams for oci8
-             *
-             */
-                return 
-                $connectionParams = array(
-                    'driver' => $driver = $db['default'],
-                    'host' => $db[$driver]['mysql_host'],
-                    'dbname' =>$db[$driver]['mysql_database'],
-                    'user' =>$db[$driver]['mysql_username'],
-                    'password' =>$db[$driver]['mysql_password'],
-                );
-                break;   
 
             case "pdo_mysql":
              /**
@@ -141,13 +127,13 @@ class DocEntityManager{
                 return 
                 $connectionParams = array(
                     'driver' => $driver = $db['default'],
-                    'user' =>$db[$driver]['pdo_mysql_username'],
-                    'password' =>$db[$driver]['pdo_mysql_password'],
-                    'host' => $db[$driver]['pdo_mysql_host'],
-                    'port' => $db[$driver]['pdo_mysql_port'],
-                    'dbname' =>$db[$driver]['pdo_mysql_database'],
-                    'unix_socket' =>$db[$driver]['pdo_mysql_unix_socket'],
-                    'charset' =>$db[$driver]['pdo_mysql_charset'],
+                    'user' =>$db[$driver]['user'],
+                    'password' =>$db[$driver]['password'],
+                    'host' => $db[$driver]['host'],
+                    'port' => $db[$driver]['port'],
+                    'dbname' =>$db[$driver]['dbname'],
+                    'unix_socket' =>$db[$driver]['unix_socket'],
+                    'charset' =>$db[$driver]['charset'],
                 );
 
                 break;
@@ -164,19 +150,19 @@ class DocEntityManager{
                 return 
                 $connectionParams = array(
                     'driver' => $driver = $db['default'],
-                    'user' =>$db[$driver]['pgsql_username'],
-                    'password' =>$db[$driver]['pgsql_password'],
-                    'host' => $db[$driver]['pgsql_host'],
-                    'port' => $db[$driver]['pgsql_port'],
-                    'dbname' =>$db[$driver]['pgsql_database'],
-                    'charset' => $db[$driver]['pgsql_charset'],
-                    'default_dbname' => $db[$driver]['pgsql_default_dbname'],
-                    'sslmode' => $db[$driver]['pgsql_sslmode'],
-                    'sslrootcert' => $db[$driver]['pgsql_sslrootcert'],
-                    'sslcert' => $db[$driver]['pgsql_sslcert'],
-                    'sslkey' => $db[$driver]['pgsql_sslkey'],
-                    'sslcrl' => $db[$driver]['pgsql_sslcrl'],
-                    'application_name' => $db[$driver]['pgsql_application_name'],
+                    'user' =>$db[$driver]['user'],
+                    'password' =>$db[$driver]['password'],
+                    'host' => $db[$driver]['host'],
+                    'port' => $db[$driver]['port'],
+                    'dbname' =>$db[$driver]['dbname'],
+                    'charset' => $db[$driver]['charset'],
+                    'default_dbname' => $db[$driver]['default_dbname'],
+                    'sslmode' => $db[$driver]['sslmode'],
+                    'sslrootcert' => $db[$driver]['sslrootcert'],
+                    'sslcert' => $db[$driver]['sslcert'],
+                    'sslkey' => $db[$driver]['sslkey'],
+                    'sslcrl' => $db[$driver]['sslcrl'],
+                    'application_name' => $db[$driver]['application_name'],
                 );
 
                 break;    
@@ -193,10 +179,10 @@ class DocEntityManager{
                 return 
                 $connectionParams = array(
                     'driver' => $driver = $db['default'],
-                    'host' => $db[$driver]['sqlsrv_host'],
-                    'dbname' =>$db[$driver]['sqlsrv_database'],
-                    'user' =>$db[$driver]['sqlsrv_username'],
-                    'password' =>$db[$driver]['sqlsrv_password'],
+                    'host' => $db[$driver]['host'],
+                    'dbname' =>$db[$driver]['dbname'],
+                    'user' =>$db[$driver]['user'],
+                    'password' =>$db[$driver]['password'],
                 );
             break; 
 
@@ -212,13 +198,13 @@ class DocEntityManager{
             default: return 
             $connectionParams = array(
                 'driver' => 'pdo_mysql', 
-                'host' => $db['pdo_mysql']['pdo_mysql_host'],
-                'dbname' =>$db['pdo_mysql']['pdo_mysql_database'],
-                'user' =>$db['pdo_mysql']['pdo_mysql_username'],
-                'password' =>$db['pdo_mysql']['pdo_mysql_password'],
-                'port' => $db['pdo_mysql']['pdo_mysql_port'],
-                'unix_socket' =>$db['pdo_mysql']['pdo_mysql_unix_socket'],
-                'charset' =>$db['pdo_mysql']['pdo_mysql_charset'],
+                'host' => $db['pdo_mysql']['host'],
+                'dbname' =>$db['pdo_mysql']['dbname'],
+                'user' =>$db['pdo_mysql']['user'],
+                'password' =>$db['pdo_mysql']['password'],
+                'port' => $db['pdo_mysql']['port'],
+                'unix_socket' =>$db['pdo_mysql']['unix_socket'],
+                'charset' =>$db['pdo_mysql']['charset'],
             );
         }
     }

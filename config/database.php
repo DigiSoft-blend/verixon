@@ -38,102 +38,98 @@ return [
   /**
   * doctrine sqlit configuration variables
   */ 
- 'sqlit' => [
-    'sqlite_driver' => 'sqlite',
-    'sqlite_url' => getenv('DATABASE_URL'),
-    'sqlite_database' => getenv('DB_DATABASE'),
-    'sqlite_prefix' => '',
-    'sqlite_foreign_key_constraints' => getenv('DB_FOREIGN_KEYS'),
+
+               
+
+ 'pdo_sqlite' => [
+    'user' =>  getenv('DB_USERNAME'),
+    'password' => getenv('DB_PASSWORD'),
+    'path' => getenv('DB_SQLITE_PATH'),
+    'memory' =>  getenv('DB_SQLITE_MEMORY'),
   ], 
  /**
   * doctrine mysql configuration variables
   */   
- 'mysql' => [
-    'mysql_driver' => 'mysql',
-    'mysql_url' => getenv('DATABASE_URL'),
-    'mysql_host' => getenv('DB_HOST'),
-    'mysql_port' => getenv('DB_PORT'),
-    'mysql_database' => getenv('DB_DATABASE'),
-    'mysql_username' => getenv('DB_USERNAME'),
-    'mysql_password' => getenv('DB_PASSWORD'),
-    'mysql_unix_socket' => getenv('DB_SOCKET'),
-    'mysql_charset' => 'utf8mb4',
-    'mysql_collation' => 'utf8mb4_unicode_ci',
-    'mysql_prefix' => '',
-    'mysql_prefix_indexes' => true,
-    'mysql_strict' => true,
-    'mysql_engine' => null,
-    'mysql_options' => extension_loaded('pdo_mysql') ? array_filter([
-        PDO::MYSQL_ATTR_SSL_CA => getenv('MYSQL_ATTR_SSL_CA'),
-    ]) : [],
+ 'mysqli' => [
+   
+    'url' => getenv('DATABASE_URL'),
+    'host' => getenv('DB_HOST'),
+    'port' => getenv('DB_PORT'),
+    'dbname' => getenv('DB_DATABASE'),
+    'user' => getenv('DB_USERNAME'),
+    'password' => getenv('DB_PASSWORD'),
+    'unix_socket' => getenv('DB_MYSQLI_UNIX_SOCKET'),
+    'charset' => getenv('DB_MYSQLI_CHARSET'),
+    'ssl_key' => getenv('DB_MYSQLI_SSL_KEY'),
+    'ssl_cert' => getenv('DB_MYSQLI_SSL_CERT'),
+    'ssl_ca' => getenv('DB_MYSQLI_SSL_CA'),
+    'ssl_capath' => getenv('DB_MYSQLI_SSL_CAPATH'),
+    'ssl_cipher' => getenv('DB_MYSQLI_SSL_CIPHER'),
+    'driverOptions' => getenv('DB_MYSQLI_DRIVER_OPTIONS'),
   ], 
  /**
   * doctrine pdo_mysql configuration variables
   */
   'pdo_mysql'=>[
-    'pdo_mysql_driver' => 'pdo_mysql',
-    'pdo_mysql_url' => getenv('DATABASE_URL'),
-    'pdo_mysql_host' => getenv('DB_HOST'),
-    'pdo_mysql_port' => getenv('DB_PORT'),
-    'pdo_mysql_database' => getenv('DB_DATABASE'),
-    'pdo_mysql_username' => getenv('DB_USERNAME'),
-    'pdo_mysql_password' => getenv('DB_PASSWORD'),
-    'pdo_mysql_unix_socket' => getenv('DB_SOCKET'),
-    'pdo_mysql_charset' => 'utf8mb4',
-    'pdo_mysql_collation' => 'utf8mb4_unicode_ci',
-    'pdo_mysql_prefix' => '',
-    'pdo_mysql_prefix_indexes' => true,
-    'pdo_mysql_strict' => true,
-    'pdo_mysql_engine' => null,
+
+    'user' => getenv('DB_USERNAME'),
+    'password' => getenv('DB_PASSWORD'),
+    'host' => getenv('DB_HOST'),
+    'port' => getenv('DB_PORT'),
+    'dbname' => getenv('DB_DATABASE'),
+    'unix_socket' => getenv('DB_MYSQL_UNIX_SOCKET'),
+    'charset' => getenv('DB_MYSQL_CHARSET'),
+
   ],
-    
+
+'pdo_oci'=>[
+
+  'user' => getenv('DB_USERNAME'),
+  'password' => getenv('DB_PASSWORD'),
+  'host' => getenv('DB_HOST'),
+  'port' => getenv('DB_PORT'),
+  'dbname' => getenv('DB_DATABASE'),
+  'servicename' => getenv('DB_OCI_SERVICE_NAME'),
+  'service' => getenv('DB_OCI_SERVICE'),
+  'pooled' => getenv('DB_OCI_POOLED'),
+  'charset' => getenv('DB_OCI_CHARSET'),
+  'instancename' =>  getenv('DB_OCI_INSTANCENAME'),
+  'connectstring' =>  getenv('DB_OCI_CONNECTSTRING'),
+  'persistent' => getenv('DB_OCI_PERSISTENT'),
+],  
  /**
   * doctrine pgsql configuration variables
   */
-  'pgsql' => [
-    'pgsql_driver' => 'pgsql',
-    'pgsql_url' => getenv('DATABASE_URL'),
-    'pgsql_host' => getenv('DB_HOST'),
-    'pgsql_port' => getenv('DB_PORT'),
-    'pgsql_database' => getenv('DB_DATABASE'),
-    'pgsql_username' => getenv('DB_USERNAME'),
-    'pgsql_password' => getenv('DB_PASSWORD'),
-    'pgsql_charset' => 'utf8',
-    'pgsql_prefix' => '',
-    'pgsql_prefix_indexes' => true,
-    'pgsql_schema' => 'public',
-    'pgsql_sslmode' => 'prefer',
+  'pdo_pgsql' => [
+
+    'user' => getenv('DB_USERNAME'),
+    'password' => getenv('DB_PASSWORD'),
+    'host' => getenv('DB_HOST'),
+    'port' => getenv('DB_PORT'),
+    'dbname' => getenv('DB_DATABASE'),
+    'charset' => getenv('DB_PGSQL_CHARSET'),
+    'default_dbname' => getenv('DB_PGSQL_DEFAULT_DBNAME'),
+    'sslmode' => getenv('DB_PGSQL_SSLMODE'),
+    'sslrootcert' => getenv('DB_PGSQL_SSL_ROOT_CERT'),
+    'sslcert' => getenv('DB_PGSQL_SSLCERT'),
+    'sslkey' => getenv('DB_PGSQL_SSLKEY'),
+    'sslcrl' => getenv('DB_PGSQL_SSLCRL'),
+    'application_name' => getenv('DB_PGSQL_APP_NAME'),
   ],
 
  /**
   * doctrine sqlsrv configuration variables
   */  
-  'sqlsrv'=>[
-    'sqlsrv_driver' => 'sqlsrv',
-    'sqlsrv_url' => getenv('DATABASE_URL'),
-    'sqlsrv_host' => getenv('DB_HOST'),
-    'sqlsrv_port' => getenv('DB_PORT'),
-    'sqlsrv_database' => getenv('DB_DATABASE'),
-    'sqlsrv_username' => getenv('DB_USERNAME'),
-    'sqlsrv_password' => getenv('DB_PASSWORD'),
-    'sqlsrv_charset' => 'utf8',
-    'sqlsrv_prefix' => '',
-    'sqlsrv_prefix_indexes' => true,
+  'pdo_sqlsrv'=>[
+
+      'host' => getenv('DB_HOST'),
+      'dbname'=>  getenv('DB_DATABASE'),
+      'user' => getenv('DB_USERNAME'),
+      'password' => getenv('DB_PASSWORD'),
+      
     ],
     
         
-    /*
-    |--------------------------------------------------------------------------
-    | Migration Repository Table
-    |--------------------------------------------------------------------------
-    |
-    | This table keeps track of all the migrations that have already run for
-    | your application. Using this information, we can determine which of
-    | the migrations on disk haven't actually been run in the database.
-    |
-    */
-
-    'migrations' => 'migrations',
 
     /*
     |--------------------------------------------------------------------------
@@ -146,31 +142,31 @@ return [
     |
     */
 
-    'redis' => [
+    // 'redis' => [
 
-        'client' => getenv('REDIS_CLIENT'),
+    //     'client' => getenv('REDIS_CLIENT'),
 
-        'options' => [
-            'cluster' => getenv('REDIS_CLUSTER'),
-            'prefix' => getenv('REDIS_PREFIX'),
-        ],
+    //     'options' => [
+    //         'cluster' => getenv('REDIS_CLUSTER'),
+    //         'prefix' => getenv('REDIS_PREFIX'),
+    //     ],
 
-        'default' => [
-            'url' => getenv('REDIS_URL'),
-            'host' => getenv('REDIS_HOST'),
-            'password' => getenv('REDIS_PASSWORD'),
-            'port' => getenv('REDIS_PORT'),
-            'database' => getenv('REDIS_DB'),
-        ],
+    //     'default' => [
+    //         'url' => getenv('REDIS_URL'),
+    //         'host' => getenv('REDIS_HOST'),
+    //         'password' => getenv('REDIS_PASSWORD'),
+    //         'port' => getenv('REDIS_PORT'),
+    //         'database' => getenv('REDIS_DB'),
+    //     ],
 
-        'cache' => [
-            'url' => getenv('REDIS_URL'),
-            'host' => getenv('REDIS_HOST'),
-            'password' => getenv('REDIS_PASSWORD'),
-            'port' => getenv('REDIS_PORT'),
-            'database' => getenv('REDIS_CACHE_DB'),
-        ],
+    //     'cache' => [
+    //         'url' => getenv('REDIS_URL'),
+    //         'host' => getenv('REDIS_HOST'),
+    //         'password' => getenv('REDIS_PASSWORD'),
+    //         'port' => getenv('REDIS_PORT'),
+    //         'database' => getenv('REDIS_CACHE_DB'),
+    //     ],
 
-    ],
+    // ],
 
 ];
