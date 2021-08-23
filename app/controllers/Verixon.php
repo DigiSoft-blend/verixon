@@ -15,37 +15,37 @@ class Verixon extends Controller{
       $this->render('welcome.html');
     }
 
-    public function dashboard()
-    {
-      $this->render('dashboard.html.twig');
-    }
+    // public function dashboard()
+    // {
+    //   $this->render('dashboard.html.twig');
+    // }
 
-    public function login()
-    {
-      $this->render('login.html.twig');
-    }
+    // public function login()
+    // {
+    //   $this->render('login.html.twig');
+    // }
 
-    public function register()
-    {
-      $this->render('register.html.twig');
-    }
+    // public function register()
+    // {
+    //   $this->render('register.html.twig');
+    // }
     
-    public function gettingStarted(){
-      $this->render('getting-started.html.twig');
-    }
+    // public function gettingStarted(){
+    //   $this->render('getting-started.html.twig');
+    // }
 
-    public function sendMail(){
-      $this->render('mail.html.twig');
-    }
+    // public function sendMail(){
+    //   $this->render('mail.html.twig');
+    // }
     
 
-    public function fileUpload()
-    {
-      $this->render('fileUpload.html.twig');
-    }
+    // public function fileUpload()
+    // {
+    //   $this->render('fileUpload.html.twig');
+    // }
 
-    public function noNetworkConnection(){
-      $this->render('no-network.html.twig');
-    }
+    // public function noNetworkConnection(){
+    //   $this->render('no-network.html.twig');
+    // }
 
 }

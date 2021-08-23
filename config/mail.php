@@ -37,7 +37,6 @@ return (object) [
     |
     */
 
-    
         'smtp' => [
             'transport' => 'smtp',
             'host' => getenv('MAIL_HOST'),

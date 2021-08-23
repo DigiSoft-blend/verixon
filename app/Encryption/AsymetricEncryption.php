@@ -2,14 +2,36 @@
 
 namespace App\Encryption;
 
-
+/**
+ * Class AsymetricEncryption: encrypts decrypts messages
+ *
+ * @internal @verixon
+*/
 class AsymetricEncryption{
 
+   /**
+     * @var string $message
+   */
    private $message;
+   /**
+     * @var string $sealed_data
+   */
    private $sealed_data;
+   /**
+     * @var string $envelope
+   */
    private $envelope;
 
-     
+   /**
+     * Encrypts a message
+     * 
+     * @param $data 
+     * @param $public_key
+     * 
+     * @return  array : encrypted message with envelope
+     *
+   */
+
    public function encrypt($data , $public_key)
    {
       $public_key = openssl_get_publickey(file_get_contents($public_key));
@@ -28,7 +50,16 @@ class AsymetricEncryption{
       return  $secret;
    }
 
-
+  /**
+     * Encrypts a message
+     * 
+     * @param $private_key
+     * @param $sealed_data
+     * @param $envelope
+     * 
+     * @return string: plain text of decrypted message with envelope
+     *
+   */
    public function decrypt($private_key, $sealed_data, $envelope)
    {
       $private_key = openssl_get_privatekey(file_get_contents($private_key));

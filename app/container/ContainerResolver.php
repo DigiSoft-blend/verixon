@@ -13,7 +13,25 @@ use ReflectionClass;
 use ReflectionParameter;
 use ReflectionMethod;
 
+/**
+ * Class ContainerResolver: altimate dependency injection class for reolving method and constructor dependencies
+ *
+ * @internal @verixon
+ */
 class ContainerResolver{
+
+     /**
+     * gets service class name with method for dependency resolver and option c = true or false for constructor present or abscent in class
+     * 
+     * @param $serivceClassName
+     * @param array $method
+     * @param array $c
+     * 
+     * @return mixed
+     * 
+     * @throws NotFoundException: ("service key '$serivceClassName' does not exist");
+     *
+     */
     
     public function get($serivceClassName, $method = [], $c = []){
 

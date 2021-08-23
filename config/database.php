@@ -34,93 +34,94 @@ return [
     | choice installed on your machine before you begin development.
     |
     */
+  
+  /**
+  * doctrine sqlit configuration variables
+  */ 
+ 'sqlit' => [
+    'sqlite_driver' => 'sqlite',
+    'sqlite_url' => getenv('DATABASE_URL'),
+    'sqlite_database' => getenv('DB_DATABASE'),
+    'sqlite_prefix' => '',
+    'sqlite_foreign_key_constraints' => getenv('DB_FOREIGN_KEYS'),
+  ], 
+ /**
+  * doctrine mysql configuration variables
+  */   
+ 'mysql' => [
+    'mysql_driver' => 'mysql',
+    'mysql_url' => getenv('DATABASE_URL'),
+    'mysql_host' => getenv('DB_HOST'),
+    'mysql_port' => getenv('DB_PORT'),
+    'mysql_database' => getenv('DB_DATABASE'),
+    'mysql_username' => getenv('DB_USERNAME'),
+    'mysql_password' => getenv('DB_PASSWORD'),
+    'mysql_unix_socket' => getenv('DB_SOCKET'),
+    'mysql_charset' => 'utf8mb4',
+    'mysql_collation' => 'utf8mb4_unicode_ci',
+    'mysql_prefix' => '',
+    'mysql_prefix_indexes' => true,
+    'mysql_strict' => true,
+    'mysql_engine' => null,
+    'mysql_options' => extension_loaded('pdo_mysql') ? array_filter([
+        PDO::MYSQL_ATTR_SSL_CA => getenv('MYSQL_ATTR_SSL_CA'),
+    ]) : [],
+  ], 
+ /**
+  * doctrine pdo_mysql configuration variables
+  */
+  'pdo_mysql'=>[
+    'pdo_mysql_driver' => 'pdo_mysql',
+    'pdo_mysql_url' => getenv('DATABASE_URL'),
+    'pdo_mysql_host' => getenv('DB_HOST'),
+    'pdo_mysql_port' => getenv('DB_PORT'),
+    'pdo_mysql_database' => getenv('DB_DATABASE'),
+    'pdo_mysql_username' => getenv('DB_USERNAME'),
+    'pdo_mysql_password' => getenv('DB_PASSWORD'),
+    'pdo_mysql_unix_socket' => getenv('DB_SOCKET'),
+    'pdo_mysql_charset' => 'utf8mb4',
+    'pdo_mysql_collation' => 'utf8mb4_unicode_ci',
+    'pdo_mysql_prefix' => '',
+    'pdo_mysql_prefix_indexes' => true,
+    'pdo_mysql_strict' => true,
+    'pdo_mysql_engine' => null,
+  ],
     
-       
-         'sqlit' => [
-            //sqlite
-            'sqlite_driver' => 'sqlite',
-            'sqlite_url' => getenv('DATABASE_URL'),
-            'sqlite_database' => getenv('DB_DATABASE'),
-            'sqlite_prefix' => '',
-            'sqlite_foreign_key_constraints' => getenv('DB_FOREIGN_KEYS'),
-           ], 
-            
-         'mysql' => [
-            //mysql
-            'mysql_driver' => 'mysql',
-            'mysql_url' => getenv('DATABASE_URL'),
-            'mysql_host' => getenv('DB_HOST'),
-            'mysql_port' => getenv('DB_PORT'),
-            'mysql_database' => getenv('DB_DATABASE'),
-            'mysql_username' => getenv('DB_USERNAME'),
-            'mysql_password' => getenv('DB_PASSWORD'),
-            'mysql_unix_socket' => getenv('DB_SOCKET'),
-            'mysql_charset' => 'utf8mb4',
-            'mysql_collation' => 'utf8mb4_unicode_ci',
-            'mysql_prefix' => '',
-            'mysql_prefix_indexes' => true,
-            'mysql_strict' => true,
-            'mysql_engine' => null,
-            'mysql_options' => extension_loaded('pdo_mysql') ? array_filter([
-                PDO::MYSQL_ATTR_SSL_CA => getenv('MYSQL_ATTR_SSL_CA'),
-            ]) : [],
-          ], 
-           
-         'pdo_mysql'=>[
-            'pdo_mysql_driver' => 'pdo_mysql',
-            'pdo_mysql_url' => getenv('DATABASE_URL'),
-            'pdo_mysql_host' => getenv('DB_HOST'),
-            'pdo_mysql_port' => getenv('DB_PORT'),
-            'pdo_mysql_database' => getenv('DB_DATABASE'),
-            'pdo_mysql_username' => getenv('DB_USERNAME'),
-            'pdo_mysql_password' => getenv('DB_PASSWORD'),
-            'pdo_mysql_unix_socket' => getenv('DB_SOCKET'),
-            'pdo_mysql_charset' => 'utf8mb4',
-            'pdo_mysql_collation' => 'utf8mb4_unicode_ci',
-            'pdo_mysql_prefix' => '',
-            'pdo_mysql_prefix_indexes' => true,
-            'pdo_mysql_strict' => true,
-            'pdo_mysql_engine' => null,
-          ],
-            //pdo_ mysql
-            
-          'pgsql' => [
-            //pgsql 
-            'pgsql_driver' => 'pgsql',
-            'pgsql_url' => getenv('DATABASE_URL'),
-            'pgsql_host' => getenv('DB_HOST'),
-            'pgsql_port' => getenv('DB_PORT'),
-            'pgsql_database' => getenv('DB_DATABASE'),
-            'pgsql_username' => getenv('DB_USERNAME'),
-            'pgsql_password' => getenv('DB_PASSWORD'),
-            'pgsql_charset' => 'utf8',
-            'pgsql_prefix' => '',
-            'pgsql_prefix_indexes' => true,
-            'pgsql_schema' => 'public',
-            'pgsql_sslmode' => 'prefer',
-          ],
-           
+ /**
+  * doctrine pgsql configuration variables
+  */
+  'pgsql' => [
+    'pgsql_driver' => 'pgsql',
+    'pgsql_url' => getenv('DATABASE_URL'),
+    'pgsql_host' => getenv('DB_HOST'),
+    'pgsql_port' => getenv('DB_PORT'),
+    'pgsql_database' => getenv('DB_DATABASE'),
+    'pgsql_username' => getenv('DB_USERNAME'),
+    'pgsql_password' => getenv('DB_PASSWORD'),
+    'pgsql_charset' => 'utf8',
+    'pgsql_prefix' => '',
+    'pgsql_prefix_indexes' => true,
+    'pgsql_schema' => 'public',
+    'pgsql_sslmode' => 'prefer',
+  ],
 
-           'sqlsrv'=>[
-            //sqlsrv
-            'sqlsrv_driver' => 'sqlsrv',
-            'sqlsrv_url' => getenv('DATABASE_URL'),
-            'sqlsrv_host' => getenv('DB_HOST'),
-            'sqlsrv_port' => getenv('DB_PORT'),
-            'sqlsrv_database' => getenv('DB_DATABASE'),
-            'sqlsrv_username' => getenv('DB_USERNAME'),
-            'sqlsrv_password' => getenv('DB_PASSWORD'),
-            'sqlsrv_charset' => 'utf8',
-            'sqlsrv_prefix' => '',
-            'sqlsrv_prefix_indexes' => true,
-           ],
-            
+ /**
+  * doctrine sqlsrv configuration variables
+  */  
+  'sqlsrv'=>[
+    'sqlsrv_driver' => 'sqlsrv',
+    'sqlsrv_url' => getenv('DATABASE_URL'),
+    'sqlsrv_host' => getenv('DB_HOST'),
+    'sqlsrv_port' => getenv('DB_PORT'),
+    'sqlsrv_database' => getenv('DB_DATABASE'),
+    'sqlsrv_username' => getenv('DB_USERNAME'),
+    'sqlsrv_password' => getenv('DB_PASSWORD'),
+    'sqlsrv_charset' => 'utf8',
+    'sqlsrv_prefix' => '',
+    'sqlsrv_prefix_indexes' => true,
+    ],
+    
         
-
-       
-
-    
-
     /*
     |--------------------------------------------------------------------------
     | Migration Repository Table

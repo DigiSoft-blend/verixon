@@ -23,13 +23,31 @@ use Psr\Container\NotFoundExceptionInterface;
 
 use App\userClasses\message;
 
-
+/**
+ * Class Container: dependency injection class for reolving method and constructor dependencies
+ *
+ * @internal @verixon
+ */
 class Container implements ContainerInterface
 {
     
-    
+    /**
+     * @var array $instances
+    */
     protected $instances = [];
+
+    /**
+     * @var bool $hasConstructor
+    */
     protected $hasConstructor;
+
+    /**
+     * sets instances of abstract to concrete
+     * 
+     * @param object $abstract
+     * @param object $concrete
+     *
+    */
 
     public function set($abstract, $concrete = NULL){
 
@@ -39,7 +57,15 @@ class Container implements ContainerInterface
         $this->instances[$abstract] = $concrete;
     }
 
-    
+    /**
+     * resolves class :method and constructor dependencies
+     * 
+     * @param $abstract
+     * @param array $parameters
+     * 
+     * @return object
+     *
+     */
   
     public function get($abstract, $parameters = [])
     {
@@ -59,24 +85,48 @@ class Container implements ContainerInterface
         }
     }
 
-    
+    /**
+     * sets flags for classes with constructors 
+     * 
+     * @param $hasConstructor
+     * 
+     * @return bool
+     *
+     */
     public function hasConstructor($hasConstructor){
       return $this->hasConstructor = $hasConstructor;
     }
      
-
-        public function has($id): bool
-        {   
-            if(class_exists($id)){
-                return true;
-            }else{
-                return false;
-            }
+    /**
+     * checks if class $id exist
+     * 
+     * @param $id
+     * 
+     * @return bool
+     *
+     *
+     */
+    public function has($id): bool
+    {   
+        if(class_exists($id)){
+            return true;
+        }else{
+            return false;
         }
+    }
     
        
-
-
+    /**
+     * gets and resolves class method dependencies  using PHP Reflection class
+     * 
+     * @param object $class
+     * @param string $methodName
+     * 
+     * @return object
+     *
+     * @throws Exception: ("Class {$concrete} is not instantiable");
+     *
+     */ 
     public function getClassMethods($class, $methodName){
 
         if($class instanceof  Closure)
@@ -120,7 +170,17 @@ class Container implements ContainerInterface
           }
     }    
 
-
+     /**
+     * gets and resolves class constructor dependencies  using PHP Reflection class
+     * 
+     * @param object $concrete
+     * @param string $parameter
+     * 
+     * @return object
+     *
+     * @throws Exception: ("Class {$concrete} is not instantiable");
+     *
+     */ 
 
     public function getClassConstructor($concrete, $parameter)
     {
@@ -156,6 +216,16 @@ class Container implements ContainerInterface
         
     }
 
+     /**
+     * gets dependencies  to be resolved
+     * 
+     * @param array $parameters
+     * 
+     * @return array
+     *
+     * @throws Exception: ("Can not resolve class dependencies {$parameter->name}");
+     *
+     */ 
 
     public function getDependencies($parameters){
 

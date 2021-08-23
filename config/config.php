@@ -2,43 +2,26 @@
 
  /**
  * Verixon - A PHP Framework For Web Devs
+ * 
+ * verixons default config
  *
  * @package  Verixon
  * @author   Silas Udofia <Silas@Verixon.com>
+ * 
+ * @return array verixons variables
  */
 
-
  return (object) [
-  
-    'DB_CREDENTIALS' => [
-      'driver' => "pdo_mysql",
-      'host' => 'localhost',
-      'dbname' => 'verixon',
-      'user' => 'root',
-      'password' => '',
-    ],
-
-
-    /*   CHANGE TO 'production' IF DUE FOR HOSTING ELSE KEEP ON 'local' TO HAVE ACCESS TO VERIXONS WEB INTERFACE    */
-
-    'APP_STAGE' => [
-      'app_stage' => 'local'
-    ],
-
-    
-    'APP_URLS' => [
-        'baseUrl' => '/'
-    ],
-
    'NAMES'=> [
-         'SiteName'=> 'verixon.com',
-         'AppName'=> 'Verixon',
-         'Version' => 'Build v1.0',
-         'Author' => 'Silas Udofia',
-         'App_key' => '$2y$09$84HBB15/sQ0jlrB7TojeNededcoNb4dfN2q7EuIOCbtDRzy/nvRoK',
-         'Unique_Id' => 'SilasUdofia@Verixon.com'
+      'gitUser'=> 'DigiSoft-blend',
+      'email' => 'silasudofia469@gmail.com',
+      'homepage' => 'https://digisoft-blend.github.io/verixon/',
+      'AppName'=> 'Verixon',
+      'Author' => 'Silas Udofia',
+      'role' => 'Developer',
+      'App_key' => '$2y$09$84HBB15/sQ0jlrB7TojeNededcoNb4dfN2q7EuIOCbtDRzy/nvRoK',
+      'Unique_Id' => 'SilasUdofia@Verixon.com'
    ]
-   
  ];
 
 

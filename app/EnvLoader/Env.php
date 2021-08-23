@@ -2,11 +2,29 @@
 
 namespace App\EnvLoader;
 
+/**
+ * Class Env: loades .env variables
+ *
+ * @internal @verixon
+*/
+
 class Env
 {
-
+    /**
+     * @var string $path
+    */
     protected $path;
 
+    /**
+     * Env class constructor
+     * 
+     * @param string $path 
+     * 
+     * @return mixed|string : .env variables
+     * 
+     * @throws \InvalidArgumentException: (sprintf('%s does not exist', $path));
+     *
+    */
     public function __construct(string $path){
         if(!file_exists($path)){
             throw new \InvalidArgumentException(sprintf('%s does not exist', $path));
@@ -15,6 +33,14 @@ class Env
         $this->load();
     }
 
+    /**
+     * leads .env variables from .env path
+     * 
+     * @return mixed|string : .env variables
+     * 
+     * @throws \RuntimeException: (sprintf('%s file is not readable', $this->path));
+     *
+    */
     public function load() :void
     {
        if(!is_readable($this->path)){

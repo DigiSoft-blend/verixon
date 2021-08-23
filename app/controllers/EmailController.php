@@ -31,65 +31,52 @@ class EmailController extends Controller
 
   public function Email(Request $request)
   {
-
-    $file_extension = [
-      'png',
-      'jpg',
-      'jpeg'
-     ];
-    
-    $gmail = new Mailer;
+    /** gets email credentials from form input */
     $name = $request->getPost('recipientName');
     $recipient = $request->getPost('toAddress');
     $body = $request->getPost('body');
     $attachment = $request->getFile('attachment');
 
-    $request->startSession();
-
+    $request->startSession();//starts a session
+   
    if($request->isSubmitted())
-   {
-      $validation = new ImageValidation(); 
+   {  
+     /** set valid file extentions */
+      $file_extension = [
+          'jpeg',
+          'png'
+      ];
+
+      $validation = new ImageValidation(); //creates image validation object to validate images/files
       $validated = $validation->validate($file_extension, '4m', 'attachment');
       /** Test if image is valid file type */
       if($validated === 'File_Exist' || $validated === 'Invalid_File' || $validated === 'Max_Size_Exceeded'){
-        //$request->sessionSaveThis('error', $validated);
         $data = [ 'error' => $validated ];
         $this->render('mail.html.twig', $data);
       }
       else{  
-        $gmail->prepare();
-        $gmail->from_Verixon();//from address @ .env 
-        $gmail->to($recipient, $name);
-        $gmail->body($body);
-        $gmail->attachFile($attachment);
-        $gmail->contentType('text/html');
-        $gmail->send();
+        $gmail = new Mailer; //creates a mailer object for sending emails
+        $gmail->prepare();//prepares mail transport returns a message object
+        $gmail->from_verixon();//from address @ .env 
+        $gmail->to($recipient, $name);//to recipient with name
+        $gmail->body($body);//body/content of message
+        $gmail->attachFile($attachment);//adds an attachment example: an image.
+        $gmail->contentType('text/html');//sets the content type
+        $gmail->send();//sends the mail.
 
-        $connection = $gmail->getStatus();
+        $connection = $gmail->getStatus();//gets the status of message sent or not
 
         if($connection['transport_failure'] === true){
-          
-           $request->sessionSaveThis('connectionError', 'Connection error. Check your network connection !');
-
-          $data = [
-            'connectionErrorMessage' => $connection['message']
-          ];
-         
+          $data = [ 'connectionErrorMessage' => $connection['message'] ];
           $this->render('no-network.html.twig', $data);
           exit;
-
         }else{
           $request->sessionSaveThis('messageSentAlert', 'Mail has been sent to '. $recipient);
-          echo 'ok';
         }
      }
 
    }else{   
-    $notification = [
-      'messageSentAlert' => $request->sessionGet('messageSentAlert'),
-    ];
-
-    $this->render('mail.html.twig', $notification);
+    $this->render('mail.html.twig');
     $request->sessionReset();
    }
 

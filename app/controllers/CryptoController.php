@@ -20,12 +20,6 @@ use App\redirect\Redirect;
 
 class CryptoController extends controller{
 
-  public function keyGenerate()
-  {
-    //returns a random key of length 20
-    return $crypto->keyGenerate(20);
-  }
-
   public function AsymetriceEncryptMessage(Request $request)
   { 
     //every user that registers is given a unique key

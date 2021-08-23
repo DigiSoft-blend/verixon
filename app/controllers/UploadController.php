@@ -19,42 +19,35 @@ class UploadController extends Controller{
          'jpg',
          'jpeg'
         ];
-     
-     $token = $request->getPost('token');   
+      
      $file = $request->getFile('file');
      
      $request->startSession();
-
-     $request->sessionSaveThis('token',  $token );
-     var_dump($request->sessionGet('token'));
-
-     if($request->isSubmitted())// && hash::verifyThis('/file', $token))
+    
+     if($request->isSubmitted())
      {  
         $validation = new ImageValidation(); 
         $validated = $validation->validate($file_extension, '4m', 'file');
         
         if($validated === 'file_exist' || $validated === 'invalid_file' || $validated === 'max_size_exceeded'){
-        
           $request->sessionSaveThis('error', $validated);
-
         }else{ 
-           $cloudService = new Cloudinary();
+        
+          $cloudService = new Cloudinary();
+          $cloudService->prepare();  
+          $connection = $cloudService->send('file', $file);
 
-           $cloudService->prepare();  
-           $connection = $cloudService->send('file', $file);
+          $request->sessionSaveThis('secure_url', $cloudService->getSecureUrl());//fetches image seecure url
+          $request->sessionSaveThis('public_id', $cloudService->getPublicID());//fetches image public id
 
-           $request->sessionSaveThis('secure_url', $cloudService->getSecureUrl());
-           $request->sessionSaveThis('public_id', $cloudService->getPublicID());
-
-            if($connection === 'connection_error'){
-              $request->sessionSaveThis('connectionError', 'faild to connect to the internet: check your network connection !'); 
-              $request->unlinkFile($file);
-            }else{
-               //do database stoff in here
-            }
+          if($connection === 'connection_error'){
+            $request->sessionSaveThis('connectionError', 'faild to connect to the internet: check your network connection !'); 
+            $request->unlinkFile($file);//deletes the file from folder if theres a connection error 
+          }else{
+            //do database stuffs in here
           }
-          
-
+        }
+     /** send multi data to user interface with array  */   
      $data = [
       'secure_url' => $request->sessionGet('secure_url'),
       'public_id' => $request->sessionGet('public_id'),
@@ -62,10 +55,10 @@ class UploadController extends Controller{
       'error' => $request->sessionGet('error')
      ];
 
+    $this->render('fileUpload.html.twig', $data);
 
-     $this->render('fileUpload.html.twig', $data);
     }else{
-      echo 'session expired';
+      $this->render('fileUpload.html.twig');
     }
  }
 

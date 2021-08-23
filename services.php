@@ -4,6 +4,8 @@
 /**
  * Verixon - A PHP Framework For Web Devs
  *
+ * add a controller here with a method method or constructor injection
+ * 
  * @package  Verixon
  * @author   Silas Udofia <Silas@Verixon.com>
  */
