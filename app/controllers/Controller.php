@@ -29,8 +29,9 @@ class Controller
    *
   */
   public function render($view , $content = []){
-    $page = new TwigLoader;
-    return $page->render($view , $content);
+    // $page = new TwigLoader;
+    // return $page->render($view , $content);
+    echo "in base controller";
   }
 
 }
