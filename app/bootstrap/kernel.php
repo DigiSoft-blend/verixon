@@ -1,11 +1,5 @@
 <?php
 
-/**
- * Verixon - A PHP Framework For Web Devs
- *
- * @package  Verixon
- * @author   Silas Udofia <Silas@Verixon.com>
- */
 
 namespace App\Bootstrap;
 
