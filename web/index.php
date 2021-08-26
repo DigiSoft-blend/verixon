@@ -15,6 +15,6 @@
  
 //   $verixon = new App(); //creates a new verixon app instance
  
-//require_once ROUTE_PATH . 'routes.php'; 
+require_once ROUTE_PATH . 'routes.php'; 
 
 echo "verixon";
