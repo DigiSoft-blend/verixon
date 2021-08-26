@@ -7,7 +7,7 @@
  * @author   Silas Udofia <Silas@Verixon.com>
  */
 
-namespace App\bootstrap;
+namespace App\Bootstrap;
 
 /**
  * Class Kernel

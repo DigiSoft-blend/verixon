@@ -11,7 +11,7 @@
 
  $configcon = include __DIR__.'/../config/configcon.php'; //require verixons default configuration
 
- use App\bootstrap\App;
+ use App\Bootstrap\App;
  
   $verixon = new App(); //creates a new verixon app instance
  

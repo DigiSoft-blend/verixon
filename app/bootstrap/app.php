@@ -7,14 +7,14 @@
  * @author   Silas Udofia <Silas@Verixon.com>
  */
 
-namespace App\bootstrap;
+namespace App\Bootstrap;
 
 /**
  * Class app
  *
  * @internal @verixon
 */
-use App\bootstrap\kernel;
+use App\Bootstrap\kernel;
 
 /**
  * starts a verixon application via verixons kernel
