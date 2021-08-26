@@ -37,10 +37,10 @@ class ContainerResolver{
     
     public static function get( $serivceClassName, $method = [], $c = []){
 
-         $services = require 'services.php';
+        // $services = require 'services.php';
         // $container = new Container();
       echo 'in resolver';
-        //require(__DIR__.'/../routes.php');
+        require(__DIR__.'/../services.php');
 
         // if(array_key_exists($serivceClassName, $services)){
         //     $class = new ReflectionClass($services[$serivceClassName]);
