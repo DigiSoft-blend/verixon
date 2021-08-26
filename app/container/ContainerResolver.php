@@ -37,9 +37,9 @@ class ContainerResolver{
     
     public static function get( $serivceClassName, $method = [], $c = []){
 
-        // $services = require 'services.php';
+         $services = require '../services.php';
         // $container = new Container();
-        $services = require __DIR__.'/../services.php';
+        //$services = require __DIR__.'/../services.php';
        // $container = new Container();
 
         echo 'in resolver';

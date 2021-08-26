@@ -19,4 +19,3 @@
 
 require(__DIR__.'/../routes.php');
 
-echo 'verixon';
