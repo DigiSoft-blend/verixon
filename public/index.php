@@ -14,9 +14,7 @@
 
  use App\bootstrap\app;
  
-  if( _APPNAME === 'Verixon' &&  _AUTHOR === 'Silas Udofia'){
+ 
     $verixon = new App(); //creates a new verixon app instance
-  }else{
-    http_response_code('505'); //returns this if verixon credentials changed
-  }
+ 
 
