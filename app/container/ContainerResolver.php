@@ -39,8 +39,11 @@ class ContainerResolver{
 
         // $services = require 'services.php';
         // $container = new Container();
-      echo 'in resolver';
-        require(__DIR__.'/../services.php');
+        $services = require(__DIR__.'/../services.php');
+        $container = new Container();
+
+        echo 'in resolver';
+       
 
         // if(array_key_exists($serivceClassName, $services)){
         //     $class = new ReflectionClass($services[$serivceClassName]);
