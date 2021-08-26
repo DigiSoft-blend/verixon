@@ -14,7 +14,6 @@
 
  use App\bootstrap\app;
  
- 
-    $verixon = new App(); //creates a new verixon app instance
+  $verixon = new App(); //creates a new verixon app instance
  
 

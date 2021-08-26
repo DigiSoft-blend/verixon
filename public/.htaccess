@@ -1,9 +1,3 @@
-<IfModule mod_rewrite.c>
-    Options -Multiviews
-    RewriteEngine On
-    # Send Requests To Front Controller...
-    RewriteBase /verixon/public
-    RewriteCond %{REQUEST_FILENAME} !-d
-    RewriteCond %{REQUEST_FILENAME} !-f
-    RewriteRule ^(.+)$  index.php?url=$1 [QSA,L]
-</IfModule>
+RewriteEngine On
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^ index.php [QSA,L]
