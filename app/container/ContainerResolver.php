@@ -9,9 +9,9 @@
 
 namespace App\container;
 
-// use ReflectionClass;
-// use ReflectionParameter;
-// use ReflectionMethod;
+use ReflectionClass;
+use ReflectionParameter;
+use ReflectionMethod;
 
 /**
  * Class ContainerResolver: altimate dependency injection class for reolving method and constructor dependencies
