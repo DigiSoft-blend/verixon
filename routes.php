@@ -1,7 +1,7 @@
 <?php
 
 use App\router\Route;
-use App\container\ContainerResolver;
+use App\container\ContainerResolve;
 
 
 /**
