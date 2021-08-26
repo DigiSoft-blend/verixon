@@ -76,7 +76,7 @@ private static  $urlValues;
   //   }  
   // } 
 
-  public static function get()
+  public static function get($url, $function, $urlStringVars = null)
   {
     //   self::$url = filter_var($url, FILTER_SANITIZE_URL);// filters and sanitizes a url
 
@@ -98,13 +98,13 @@ private static  $urlValues;
     //   self::$urlValues = explode('/', $requestUriParams);
       
     //   if(isset($requestUri)){
-    //   if($requestUri === $newUri){
-    //     $function->__invoke();
-    //   }else{
-    //     http_response_code(404);
-    //   } 
+      //if($requestUri === $newUri){
+        $function->__invoke();
+      // }else{
+      //   http_response_code(404);
+      // } 
     // }  
-    echo 'function is working';
+    //echo 'function is working';
   } 
   
     
