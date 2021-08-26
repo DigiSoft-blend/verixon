@@ -8,8 +8,8 @@
  */ 
 
 
- require_once __DIR__.'/../autoload.php'; //require verixons autoloader
-//require('../vendor/autoload.php');
+ //require_once __DIR__.'/../autoload.php'; //require verixons autoloader
+ require('../vendor/autoload.php');
  $configcon = include __DIR__.'/../config/configcon.php'; //require verixons default configuration
 
  use App\bootstrap\App;
