@@ -25,12 +25,12 @@ class Controller
    * @param $view
    * @param array $content
    * 
-   * @return TwigLoader page instance
    *
   */
   public function render($view , $content = []){
     $page = new TwigLoader;
     echo $page->render($view , $content);
+    echo 'ok';
   }
 
 }
