@@ -50,7 +50,7 @@
  /**
   * @const PUBLIC_PATH : verixons public directory path
   */   
-    define('PUBLIC_PATH', ROOT . 'public' . DS);
+    define('PUBLIC_PATH', ROOT . 'web' . DS);
  /**
   * @const CONFIG_PATH : verixons config directory path
   */ 

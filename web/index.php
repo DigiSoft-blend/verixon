@@ -7,10 +7,7 @@
  * @author   Silas Udofia <Silas@Verixon.com>
  */ 
 
-
- //require_once __DIR__.'/../vendor/autoload.php'; //require verixons autoloader
- 
- require('../vendor/autoload.php');
+ require('./vendor/autoload.php');
 
  $configcon = include __DIR__.'/../config/configcon.php'; //require verixons default configuration
 
