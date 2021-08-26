@@ -38,21 +38,23 @@ class ContainerResolver{
         $services = require 'services.php';
         $container = new Container();
 
-        if(array_key_exists($serivceClassName, $services)){
-            $class = new ReflectionClass($services[$serivceClassName]);
-                $constructor = $class->getConstructor();
+        //require(__DIR__.'/../routes.php');
 
-                if(is_null($constructor) && empty($method)){
-                    echo "nothing";
-                }else{
-                    $container->hasConstructor($c);
-                    $outputs =  $container->get( $services[$serivceClassName] , $method); 
-                    return $outputs;
-                }
+        // if(array_key_exists($serivceClassName, $services)){
+        //     $class = new ReflectionClass($services[$serivceClassName]);
+        //         $constructor = $class->getConstructor();
+
+        //         if(is_null($constructor) && empty($method)){
+        //             echo "nothing";
+        //         }else{
+        //             $container->hasConstructor($c);
+        //             $outputs =  $container->get( $services[$serivceClassName] , $method); 
+        //             return $outputs;
+        //         }
                
-        }else{
-            throw new NotFoundException("service key '$serivceClassName' does not exist");
-        }
+        // }else{
+        //     throw new NotFoundException("service key '$serivceClassName' does not exist");
+        // }
     }
 
 }
