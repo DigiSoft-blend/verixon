@@ -9,7 +9,9 @@
 
 
  //require_once __DIR__.'/../vendor/autoload.php'; //require verixons autoloader
-require( __DIR__.'/../vendor/autoload.php');
+ 
+ require('../vendor/autoload.php');
+
  $configcon = include __DIR__.'/../config/configcon.php'; //require verixons default configuration
 
  use App\bootstrap\App;
