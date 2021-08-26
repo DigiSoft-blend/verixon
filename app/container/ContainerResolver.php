@@ -37,7 +37,7 @@ class ContainerResolver{
     
     public static function get( $serivceClassName, $method = [], $c = []){
 
-        // $services = require 'services.php';
+         $services = require 'services.php';
         // $container = new Container();
       echo 'in resolver';
         //require(__DIR__.'/../routes.php');
