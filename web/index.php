@@ -17,6 +17,6 @@
  
 //require_once ROUTE_PATH . 'routes.php'; 
 
-require('/routes.php');
+require('./routes.php');
 
 echo 'verixon';
