@@ -31,8 +31,8 @@ class TwigLoader
    * @return object : Twig_Environment instance
    */
     public function __construct(){
-        $loader = new Twig_Loader_Filesystem( __DIR__.'/web/template');
-        $twig = new Twig_Environment($loader, ['debug' => true],['cache' => '/templates/cache']);
+        $loader = new Twig_Loader_Filesystem('../web/templates');
+        $twig = new Twig_Environment($loader, ['debug' => true],['cache' => '../templates/cache']);
         $twig->addExtension(new Twig_Extension_Debug());
         $this->twig = $twig;
     }
