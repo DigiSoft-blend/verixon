@@ -2,7 +2,7 @@
 
 namespace App\Init;
 
-class Kernel
+class kernel
 {
    public function startverixon(){
      require(__DIR__.'/../routes.php');
