@@ -7,15 +7,15 @@
  * @author   Silas Udofia <Silas@Verixon.com>
  */ 
 
+ use App\Bootstrap\kernel;
+
  require(__DIR__.'/../vendor/autoload.php');
 
  $configcon = include __DIR__.'/../config/configcon.php'; //require verixons default configuration
 
-//  use App\Bootstrap\App;
- 
-//   $verixon = new App(); //creates a new verixon app instance
+ $verixonApp = new kernel(); //creates a new verixon app instance
  
 //require_once ROUTE_PATH . 'routes.php'; 
 
-require(__DIR__.'/../routes.php');
+
 

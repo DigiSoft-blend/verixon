@@ -20,18 +20,18 @@ use ReflectionMethod;
  */
 class ContainerResolver{
 
-    //  /**
-    //  * gets service class name with method for dependency resolver and option c = true or false for constructor present or abscent in class
-    //  * 
-    //  * @param $serivceClassName
-    //  * @param array $method
-    //  * @param array $c
-    //  * 
-    //  * @return mixed
-    //  * 
-    //  * @throws NotFoundException: ("service key '$serivceClassName' does not exist");
-    //  *
-    //  */
+     /**
+     * gets service class name with method for dependency resolver and option c = true or false for constructor present or abscent in class
+     * 
+     * @param $serivceClassName
+     * @param array $method
+     * @param array $c
+     * 
+     * @return mixed
+     * 
+     * @throws NotFoundException: ("service key '$serivceClassName' does not exist");
+     *
+     */
 
    
     public static function get( $serivceClassName, $method = [], $c = []){
