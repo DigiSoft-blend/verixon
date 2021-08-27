@@ -13,8 +13,9 @@
 
  $configcon = include __DIR__.'/../config/configcon.php'; //require verixons default configuration
 
- require(__DIR__.'/../routes.php');
- //$verixonApp = new \kernel(); //creates a new verixon app instance
+ //require(__DIR__.'/../routes.php');
+
+ \kernel::startverixon(); //creates a new verixon app instance
  
 
 
