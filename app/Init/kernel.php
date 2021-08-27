@@ -1,6 +1,6 @@
 <?php
 
-namespace App\verixon;
+namespace App\Init;
 
 class Kernel
 {
