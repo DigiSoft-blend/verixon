@@ -33,8 +33,7 @@ class ContainerResolver{
     //  *
     //  */
 
-   // $serivceClassName, $method = [], $c = []
-    
+   
     public static function get( $serivceClassName, $method = [], $c = []){
 
          $services = require '../services.php';
