@@ -29,8 +29,7 @@ class Controller
   */
   public function render($view , $content = []){
      $page = new TwigLoader;
-    // echo $page->render($view , $content);
-   
+     echo $page->render($view , $content);
   }
 
 }

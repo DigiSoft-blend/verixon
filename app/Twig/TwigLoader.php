@@ -35,7 +35,6 @@ class TwigLoader
         $twig = new Twig_Environment($loader, ['debug' => true],['cache' => '../templates/cache']);
         $twig->addExtension(new Twig_Extension_Debug());
         $this->twig = $twig;
-        echo 'twigging';
     }
    /**
    * renders web view 
