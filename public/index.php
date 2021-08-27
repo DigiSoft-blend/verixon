@@ -7,7 +7,7 @@
  * @author   Silas Udofia <Silas@Verixon.com>
  */ 
 
- use App\Bootstrap\kernel;
+ use App\verixon\kernel;
 
  require(__DIR__.'/../vendor/autoload.php');
 
