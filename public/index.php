@@ -7,13 +7,13 @@
  * @author   Silas Udofia <Silas@Verixon.com>
  */ 
 
- use App\verixon\kernel;
+ 
 
  require(__DIR__.'/../vendor/autoload.php');
 
  $configcon = include __DIR__.'/../config/configcon.php'; //require verixons default configuration
 
- $verixonApp = new kernel(); //creates a new verixon app instance
+ $verixonApp = new \kernel(); //creates a new verixon app instance
  
 //require_once ROUTE_PATH . 'routes.php'; 
 
