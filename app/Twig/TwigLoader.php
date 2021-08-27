@@ -46,8 +46,7 @@ class TwigLoader
    *
    */
     public function render( $view , $content = []){
-        //echo $this->twig->render($view, $content);
-        echo 'cant find view';
+        echo $this->twig->render($view, $content);
     }
    /**
    * renders views as blocks
