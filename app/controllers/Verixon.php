@@ -12,8 +12,8 @@ class Verixon extends Controller{
    
     public function index()
     {
-     // $this->render('welcome.html');
-      echo 'ok';
+      $this->render('welcome.html');
+      // echo 'ok';
     }
 
     // public function dashboard()
