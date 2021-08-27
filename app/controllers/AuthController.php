@@ -104,14 +104,14 @@ class AuthController extends Controller
         }else{
           /**Renders login page with invalid password notification */
           $notification = ['alert3' => 'Invalid password'];
-          $this->render('login.html.twig', $notification );
+          $this->render('login.html', $notification );
         }
        
        /** Else if empty user in db, this else block runs  */ 
       }else{
         /**render this page with notication */
         $notification = [ 'alert2' => 'Invalid user, please kindly regiser to create your verixon account' ];
-        $this->render('login.html.twig', $notification);
+        $this->render('login.html', $notification);
       }
     /** checks if the logged in user is still authenticated or active */
     }elseif($request->authActive('password','originalPassword')) //requires session keys for password and hash
@@ -121,7 +121,7 @@ class AuthController extends Controller
     }
     else{
       /** if false render login page with login form */
-      $this->render('login.html.twig');
+      $this->render('login.html');
     }  
 
   }
