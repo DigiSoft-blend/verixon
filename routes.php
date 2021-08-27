@@ -15,7 +15,6 @@ use App\container\ContainerResolver;
  * @author   Silas Udofia <Silas@Verixon.com>
  */
 
-Route::get('/', function(){ ContainerResolver::get('Verixon' ,'index'); });
 Route::get('/', function(){ ContainerResolver::get('Verixon' ,'index');});
 Route::get('/gettingStarted', function(){ ContainerResolver::get('Verixon', 'gettingStarted');});
 Route::get('/not-connected', function(){ ContainerResolver::get('Verixon', 'noNetworkConnection');});  
