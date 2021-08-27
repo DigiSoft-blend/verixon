@@ -9,7 +9,7 @@
 
  require(__DIR__.'/../vendor/autoload.php');
 
-// $configcon = include __DIR__.'/../config/configcon.php'; //require verixons default configuration
+ $configcon = include __DIR__.'/../config/configcon.php'; //require verixons default configuration
 
 //  use App\Bootstrap\App;
  
