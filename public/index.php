@@ -15,7 +15,7 @@
 
  //require(__DIR__.'/../routes.php');
 
- $verixon = kernel::startverixon(); //creates a new verixon app instance
- 
+ $kernel = new kernel(); //creates a new verixon app instance
+ $kernel->startverixon();
 
 
