@@ -7,7 +7,7 @@
  * @author   Silas Udofia <Silas@Verixon.com>
  */ 
 
- 
+ use App\Init\kernel
 
  require(__DIR__.'/../vendor/autoload.php');
 
